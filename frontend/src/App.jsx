@@ -1,8 +1,8 @@
 import {BrowseRouter, Routes, Route} from "react-router-dom";
 
 //Authentication
-import Login from "./Pages/auth/Login";
-import Register from "./Pages/auth/Register";
+import Login from "./Pages/auth/login";
+import Register from "./Pages/auth/register";
 
 //ADMIN DASHBOARD
 import AdminDashBoard from "./Pages/Admin/AdminDashboard";
@@ -45,6 +45,7 @@ function App(){
             <Route path="/retailer/Orders" element={<MyOrders/>}/>
             <Route path="/retailer/product" element={<PlaceOrders/>}/>
             <Route path="/retailer/dashboard" elemet={<RetailerDashboard/>}/>
+            
         </Route>
     </BrowseRouter>
   );
