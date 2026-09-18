@@ -1,39 +1,58 @@
-import { useState } from "react";
 import Navbar from "../components/Navbar";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../components/Sidebar";
 
 function AdminDashboard() {
 
-    const [name,setName]=useState("");
+    const admin = {
+        name: "Daniel",
+        age: 42,
+        dob: "20/10/2022",
+        year: 2024,
+    };
 
-    return(
+    return (
         <div className="AdminDashboard">
             <div className="Navbar">
-                <Navbar/>
+                <Navbar />
             </div>
-            
-            <Sidebar/>
+
+            <Sidebar />
 
             <main className="mainBody">
+
                 <div className="profile">
+
                     <div className="profile-image">
-                        <img src="" alt="Admin Pic" />
+                        <img
+                            src="https://via.placeholder.com/150"
+                            alt="Admin"
+                        />
                     </div>
+
                     <div className="description">
+
                         <table>
-                            <tr>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Date of Birth</th>
-                                <th>Years</th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Date of Birth</th>
+                                    <th>Year</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>{admin.name}</td>
+                                    <td>{admin.age}</td>
+                                    <td>{admin.dob}</td>
+                                    <td>{admin.year}</td>
+                                </tr>
+                            </tbody>
                         </table>
+
                     </div>
+
                 </div>
 
             </main>
@@ -41,4 +60,5 @@ function AdminDashboard() {
         </div>
     );
 }
+
 export default AdminDashboard;

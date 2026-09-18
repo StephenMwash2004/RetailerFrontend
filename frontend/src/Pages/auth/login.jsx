@@ -1,48 +1,69 @@
 import { useState } from "react";
 
-function Login(){
-    
-    const [formData,setFormData]= useState({
-        email:"",
-        password:"",
+function Login() {
+
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
     });
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
 
-    const handleChange=(e)=>{
-    const {name,value}=e.target;
-
-    setFormData({
+        setFormData({
             ...formData,
-            [name]:value,
+            [name]: value,
         });
     };
 
-    const handleSubmit=( e )=>{
-
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("http://localhost:5000/api/auth/register",{
-            method:POST,
-            headers:{
-                "Content-type":"application/json",
+        fetch("http://localhost:5000/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
             },
-            Body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
         })
-        .then((response)=>response.json())
-        .then((data)=> console.log(data))
-        .catch((error) => console.error(error));
-    }
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
-    return(
+    return (
         <div>
-            <form action="" onSubmit={handleSubmit}>
-                <input type="text" name="email" value={email} onChange={handleChange} required />
-                <input type="text" name="password" value={password} onChange={handleChange} required />
+            <form onSubmit={handleSubmit}>
 
-                <button type="submit">Sign In</button>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                />
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                />
+
+                <button type="submit">
+                    Sign In
+                </button>
 
             </form>
         </div>
     );
-};
+}
+
 export default Login;
